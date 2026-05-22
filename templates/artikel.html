@@ -5,32 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Artikel | Benih Candi</title>
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-  <!-- NAVBAR (SAMA DENGAN BERANDA) -->
+
+  <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo-area">
-      <img src="images/logo-candi.png" alt="Logo Candi" class="logo-img" />
+      <img src="{{ url_for('static', filename='images/logo-candi.png') }}" alt="Logo Candi" class="logo-img" />
       <span class="logo-text">Benih Candi</span>
     </div>
+
     <nav class="nav-links">
-      <a href="beranda.html" class="nav-link">Beranda</a>
-      <a href="artikel.html" class="nav-link active">Artikel</a>
-      <a href="produk.html" class="nav-link">Daftar Produk</a>
-      <a href="login.html">Login</a>
+      <a href="{{ url_for('index') }}" class="nav-link">Beranda</a>
+      <a href="{{ url_for('artikel') }}" class="nav-link active">Artikel</a>
+      <a href="{{ url_for('produk') }}" class="nav-link">Daftar Produk</a>
+      <a href="{{ url_for('login') }}">Login</a>
     </nav>
+
     <div class="nav-icons">
-      <a href="keranjang.html" title="Keranjang" class="cart-icon">
+      <a href="{{ url_for('keranjang') }}" title="Keranjang" class="cart-icon">
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-count" style="display:none;">0</span>
       </a>
-      <a href="titik3.html" title="Lainnya"><i class="fa fa-ellipsis-v"></i></a>
+      <a href="{{ url_for('titik3') }}" title="Lainnya">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
     </div>
+
     <div class="hamburger">
       <span></span>
       <span></span>
@@ -38,7 +44,7 @@
     </div>
   </header>
 
-  <!-- spacer supaya konten tidak tertutup navbar -->
+  <!-- spacer -->
   <div class="header-spacer"></div>
 
   <!-- ARTIKEL SECTION -->
@@ -50,8 +56,9 @@
       </div>
 
       <div class="artikel-grid">
+
         <div class="artikel-card">
-          <img src="images/produk/cabaiartikel.png" alt="Edukasi seputar cabai">
+          <img src="{{ url_for('static', filename='images/produk/cabaiartikel.png') }}" alt="Edukasi seputar cabai">
           <div class="artikel-content">
             <h3>Edukasi Seputar Cabai dan Penanamannya</h3>
             <p>Panduan lengkap budidaya cabai dari pemilihan benih hingga panen</p>
@@ -60,7 +67,7 @@
         </div>
 
         <div class="artikel-card">
-          <img src="images/buncis.jpg" alt="Buncis">
+          <img src="{{ url_for('static', filename='images/buncis.jpg') }}" alt="Buncis">
           <div class="artikel-content">
             <h3>Buncis, sayuran lezat yang mudah ditanam</h3>
             <p>Sayuran kaya Protein dan Vitamin yang menurunkan tekanan darah</p>
@@ -69,52 +76,76 @@
         </div>
 
         <div class="artikel-card">
-          <img src="images/terong.jpg" alt="Terong">
+          <img src="{{ url_for('static', filename='images/terong.jpg') }}" alt="Terong">
           <div class="artikel-content">
             <h3>Apa itu Terong, dan bagaimana penanamannya?</h3>
             <p>Informasi seputar Terong dan rahasia pertumbuhan optimal tanaman terong untuk hasil maksimal</p>
             <a href="https://id.wikipedia.org/wiki/Terung" class="read-more" target="_blank" rel="noopener">Baca</a>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- (Opsional) rekomendasi / CTA agar jangan kosong di bawah ini -->
+  <!-- REKOMENDASI -->
   <section class="recommendations">
     <div class="container">
       <h3>Produk Rekomendasi</h3>
       <div class="recommendation-grid">
+
         <div class="rec-card">
-          <img src="images/produk/produk1.jpg" alt="">
+          <img src="{{ url_for('static', filename='images/produk/produk1.jpg') }}" alt="">
           <h4>Benih Cabai Rawit Hibrida</h4>
           <span class="price">Rp 75.000</span>
-          <button class="btn-cart" data-name="Benih Cabai Rawit Hibrida" data-price="75000" data-id="produk1" data-img="images/produk/produk1.jpg">Beli</button>
+          <button class="btn-cart"
+            data-name="Benih Cabai Rawit Hibrida"
+            data-price="75000"
+            data-id="produk1"
+            data-img="images/produk/produk1.jpg">
+            Beli
+          </button>
         </div>
+
         <div class="rec-card">
-          <img src="images/produk/produk2.jpg" alt="">
+          <img src="{{ url_for('static', filename='images/produk/produk2.jpg') }}" alt="">
           <h4>Benih Tomat Permata</h4>
           <span class="price">Rp 65.000</span>
-          <button class="btn-cart" data-name="Benih Tomat Permata" data-price="65000" data-id="produk2" data-img="images/produk/produk2.jpg">Beli</button>
+          <button class="btn-cart"
+            data-name="Benih Tomat Permata"
+            data-price="65000"
+            data-id="produk2"
+            data-img="images/produk/produk2.jpg">
+            Beli
+          </button>
         </div>
+
         <div class="rec-card">
-          <img src="images/produk/produk6.png" alt="">
+          <img src="{{ url_for('static', filename='images/produk/produk6.png') }}" alt="">
           <h4>Benih Melon Madu</h4>
           <span class="price">Rp 85.000</span>
-          <button class="btn-cart" data-name="Benih Melon Madu" data-price="85000" data-id="produk6" data-img="images/produk/produk6.png">Beli</button>
+          <button class="btn-cart"
+            data-name="Benih Melon Madu"
+            data-price="85000"
+            data-id="produk6"
+            data-img="images/produk/produk6.png">
+            Beli
+          </button>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- FOOTER (SAMA DENGAN BERANDA) -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-grid">
-        <!-- Kolom 1: Logo & Deskripsi -->
+
+        <!-- Kolom 1 -->
         <div class="footer-col">
           <div class="footer-logo">
-            <img src="images/logo-candi.png" alt="Logo Benih Candi">
+            <img src="{{ url_for('static', filename='images/logo-candi.png') }}" alt="Logo Benih Candi">
             <h3>Benih Candi</h3>
           </div>
           <p>Menyediakan benih unggul untuk masa depan pertanian Indonesia yang lebih baik.</p>
@@ -126,19 +157,19 @@
           </div>
         </div>
 
-        <!-- Kolom 2: Quick Links -->
+        <!-- Kolom 2 -->
         <div class="footer-col">
           <h4>Quick Links</h4>
           <span class="footer-underline"></span>
           <ul>
-            <li><a href="beranda.html">Beranda</a></li>
-            <li><a href="artikel.html" class="active">Artikel</a></li>
-            <li><a href="produk.html">Produk</a></li>
-            <li><a href="titik3.html">Tentang Kami</a></li>
+            <li><a href="{{ url_for('index') }}">Beranda</a></li>
+            <li><a href="{{ url_for('artikel') }}" class="active">Artikel</a></li>
+            <li><a href="{{ url_for('produk') }}">Produk</a></li>
+            <li><a href="{{ url_for('titik3') }}">Tentang Kami</a></li>
           </ul>
         </div>
 
-        <!-- Kolom 3: Kontak -->
+        <!-- Kolom 3 -->
         <div class="footer-col">
           <h4>Kontak</h4>
           <span class="footer-underline"></span>
@@ -147,7 +178,7 @@
           <p><i class="fa fa-envelope"></i> info@benihcandi.com</p>
         </div>
 
-        <!-- Kolom 4: Newsletter -->
+        <!-- Kolom 4 -->
         <div class="footer-col">
           <h4>Newsletter</h4>
           <span class="footer-underline"></span>
@@ -157,6 +188,7 @@
             <button type="submit">Subscribe</button>
           </form>
         </div>
+
       </div>
 
       <div class="footer-bottom">
@@ -165,6 +197,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

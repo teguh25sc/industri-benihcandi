@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Keranjang Belanja | Benih Candi</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,23 +16,28 @@
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo-area">
-      <img src="images/logo-candi.png" alt="Logo Candi" class="logo-img" />
+      <img src="{{ url_for('static', filename='images/logo-candi.png') }}" alt="Logo Candi" class="logo-img" />
       <span class="logo-text">Benih Candi</span>
     </div>
 
     <nav class="nav-links">
-      <a href="beranda.html" class="nav-link">Beranda</a>
-      <a href="artikel.html" class="nav-link">Artikel</a>
-      <a href="produk.html" class="nav-link">Daftar Produk</a>
-      <a href="login.html" class="nav-link">Login</a>
+      <a href="{{ url_for('index') }}" class="nav-link">Beranda</a>
+      <a href="{{ url_for('artikel') }}" class="nav-link">Artikel</a>
+      <a href="{{ url_for('produk') }}" class="nav-link">Daftar Produk</a>
+      <a href="{{ url_for('login') }}" class="nav-link">Login</a>
     </nav>
 
     <div class="nav-icons">
-      <a href="keranjang.html" title="Keranjang" class="cart-icon active">
+      <!--
+        Ditambahkan .cart-count span agar badge jumlah item
+        muncul di halaman keranjang juga (diupdate oleh updateCartUI())
+      -->
+      <a href="{{ url_for('keranjang') }}" title="Keranjang" class="cart-icon active">
         <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count" style="display:none;">0</span>
       </a>
 
-      <a href="titik3.html" title="Lainnya" class="more-icon">
+      <a href="{{ url_for('titik3') }}" title="Lainnya" class="more-icon">
         <i class="fa fa-ellipsis-v"></i>
       </a>
     </div>
@@ -46,7 +52,7 @@
   <!-- BREADCRUMB -->
   <div class="breadcrumb">
     <div class="container">
-      <a href="beranda.html">Beranda</a>
+      <a href="{{ url_for('index') }}">Beranda</a>
       <span class="separator">/</span>
       <span class="current">Keranjang Belanja</span>
     </div>
@@ -67,14 +73,15 @@
           </div>
 
           <div class="cart-container">
-            <!-- Cart items inserted by script.js -->
+            <!-- Item keranjang dirender oleh script.js -->
           </div>
 
           <div class="cart-actions">
-            <a href="produk.html" class="btn-secondary">
+            <a href="{{ url_for('produk') }}" class="btn-secondary">
               <i class="fa fa-arrow-left"></i> Lanjut Belanja
             </a>
-            <button class="btn-clear" onclick="clearCart()">
+
+            <button class="btn-clear">
               <i class="fa fa-trash"></i> Kosongkan Keranjang
             </button>
           </div>
@@ -105,7 +112,11 @@
             <button class="btn-apply">Terapkan</button>
           </div>
 
-          <button class="checkout-btn" onclick="proceedToCheckout()">
+          <!--
+            Tombol checkout: event listener dipasang di script.js (initCartPage)
+            sehingga tidak perlu onclick inline
+          -->
+          <button class="checkout-btn">
             Lanjut ke Pembayaran
           </button>
 
@@ -118,50 +129,56 @@
     </div>
   </main>
 
-  <!-- RECOMMENDATIONS -->
+  <!-- REKOMENDASI -->
   <section class="recommendations">
     <div class="container">
       <h3>Produk yang Mungkin Anda Suka</h3>
 
       <div class="recommendation-grid">
+        <!--
+          CATATAN: Produk rekomendasi ini bersifat statis (hardcoded).
+          data-id harus sesuai dengan ID integer di tabel products.
+          Gambar menggunakan ekstensi .png sesuai file yang ada di folder produk.
+        -->
         <div class="rec-card">
-          <img src="images/produk/produk1.jpg" alt="Produk">
-          <h4>Benih Cabai Rawit</h4>
-          <span class="price">Rp 75.000</span>
-          <button class="btn-cart" 
-            data-name="Benih Cabai Rawit Hibrida" 
-            data-price="75000" 
-            data-id="produk1" 
-            data-img="images/produk/produk1.jpg">
+          <img src="{{ url_for('static', filename='images/produk/produk1.png') }}" alt="Produk">
+          <h4>Benih Cabai Rawit Tidar</h4>
+          <span class="price">Rp 60.000</span>
+          <button class="btn-cart"
+            data-name="Benih Cabai Rawit Tidar"
+            data-price="60000"
+            data-id="1"
+            data-img="{{ url_for('static', filename='images/produk/produk1.png') }}">
             Tambah
           </button>
         </div>
 
         <div class="rec-card">
-          <img src="images/produk/produk2.jpg" alt="Produk">
-          <h4>Benih Tomat Permata</h4>
-          <span class="price">Rp 65.000</span>
-          <button class="btn-cart" 
-            data-name="Benih Tomat Permata" 
-            data-price="65000" 
-            data-id="produk2" 
-            data-img="images/produk/produk2.jpg">
+          <img src="{{ url_for('static', filename='images/produk/produk2.png') }}" alt="Produk">
+          <h4>Benih Timun Lokus</h4>
+          <span class="price">Rp 60.000</span>
+          <button class="btn-cart"
+            data-name="Benih Timun Lokus"
+            data-price="60000"
+            data-id="2"
+            data-img="{{ url_for('static', filename='images/produk/produk2.png') }}">
             Tambah
           </button>
         </div>
 
         <div class="rec-card">
-          <img src="images/produk/produk3.png" alt="Produk">
-          <h4>Benih Terong Ungu</h4>
-          <span class="price">Rp 55.000</span>
-          <button class="btn-cart" 
-            data-name="Benih Terong Ungu" 
-            data-price="55000" 
-            data-id="produk3" 
-            data-img="images/produk/produk3.png">
+          <img src="{{ url_for('static', filename='images/produk/produk3.png') }}" alt="Produk">
+          <h4>Benih Buncis Sipink</h4>
+          <span class="price">Rp 50.000</span>
+          <button class="btn-cart"
+            data-name="Benih Buncis Sipink"
+            data-price="50000"
+            data-id="3"
+            data-img="{{ url_for('static', filename='images/produk/produk3.png') }}">
             Tambah
           </button>
         </div>
+
       </div>
     </div>
   </section>
@@ -173,10 +190,11 @@
 
         <div class="footer-col">
           <div class="footer-logo">
-            <img src="images/logo-candi.png" alt="Logo Benih Candi">
+            <img src="{{ url_for('static', filename='images/logo-candi.png') }}" alt="Logo Benih Candi">
             <h3>Benih Candi</h3>
           </div>
           <p>Menyediakan benih unggul untuk masa depan pertanian Indonesia yang lebih baik.</p>
+
           <div class="social-links">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -189,10 +207,10 @@
           <h4>Quick Links</h4>
           <span class="footer-underline"></span>
           <ul>
-            <li><a href="beranda.html">Beranda</a></li>
-            <li><a href="artikel.html">Artikel</a></li>
-            <li><a href="produk.html">Produk</a></li>
-            <li><a href="titik3.html">Tentang Kami</a></li>
+            <li><a href="{{ url_for('index') }}">Beranda</a></li>
+            <li><a href="{{ url_for('artikel') }}">Artikel</a></li>
+            <li><a href="{{ url_for('produk') }}">Produk</a></li>
+            <li><a href="{{ url_for('titik3') }}">Tentang Kami</a></li>
           </ul>
         </div>
 
@@ -222,6 +240,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

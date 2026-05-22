@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syarat dan Ketentuan | Agro Citra Mandiri</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <header class="header">
+    <a href="{{ url_for('titik3') }}" class="back-btn">←</a>
+    <h1>Syarat dan Ketentuan</h1>
+  </header>
+
+  <main class="container">
+    <section class="content">
+      <h2>1. Ketentuan Umum</h2>
+      <p>
+        Selamat datang di situs resmi <strong>Agro Citra Mandiri (ACM)</strong>.
+        Dengan mengakses atau menggunakan situs ini, Anda dianggap telah membaca,
+        memahami, dan menyetujui seluruh syarat serta ketentuan yang berlaku.
+      </p>
+
+      <h2>2. Penggunaan Situs</h2>
+      <p>
+        Situs ini hanya boleh digunakan untuk tujuan informasi dan pembelian produk
+        benih yang ditawarkan oleh ACM. Dilarang keras menggunakan situs untuk
+        aktivitas ilegal, penyalahgunaan data, atau pelanggaran hak cipta.
+      </p>
+
+      <h2>3. Pemesanan dan Pembayaran</h2>
+      <p>
+        Setiap pesanan yang dilakukan melalui situs kami dianggap sah setelah menerima
+        konfirmasi pembayaran. Harga dapat berubah sewaktu-waktu tanpa pemberitahuan
+        sebelumnya, namun pesanan yang telah dibayar tidak akan terpengaruh.
+      </p>
+
+      <h2>4. Pengiriman</h2>
+      <p>
+        Pengiriman dilakukan setelah proses verifikasi pembayaran selesai.
+        Waktu pengiriman dapat bervariasi tergantung lokasi dan ketersediaan stok.
+      </p>
+
+      <h2>5. Kebijakan Pengembalian</h2>
+      <p>
+        Produk yang telah dibeli tidak dapat dikembalikan kecuali terdapat kesalahan
+        pengiriman atau cacat produk dari pihak kami. Klaim pengembalian harus
+        dilakukan maksimal 3 hari setelah produk diterima.
+      </p>
+
+      <h2>7. Perubahan Syarat dan Ketentuan</h2>
+      <p>
+        <strong>Agro Citra Mandiri</strong> berhak mengubah syarat dan ketentuan ini
+        sewaktu-waktu tanpa pemberitahuan sebelumnya. Versi terbaru akan selalu
+        tersedia di halaman ini.
+      </p>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

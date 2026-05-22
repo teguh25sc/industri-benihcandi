@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Benih Candi</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script
+      src="https://kit.fontawesome.com/a2d9d6f5a8.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="logo-area">
+        <img src="{{ url_for('static', filename='images/logo-candi.png') }}" alt="Logo Candi" class="logo-img" />
+        <span class="logo-text">Benih Candi</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="{{ url_for('index') }}" class="nav-link">Beranda</a>
+        <a href="{{ url_for('artikel') }}" class="nav-link">Artikel</a>
+        <a href="{{ url_for('produk') }}" class="nav-link">Daftar Produk</a>
+        <a href="{{ url_for('login') }}" class="nav-link active">Login</a>
+      </nav>
+
+      <div class="nav-icons">
+        <a href="{{ url_for('keranjang') }}" title="Keranjang" class="cart-icon">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count" style="display:none;">0</span>
+        </a>
+        <a href="{{ url_for('titik3') }}" title="Lainnya">
+          <i class="fa fa-ellipsis-v"></i>
+        </a>
+      </div>
+
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+
+    <main class="login-container">
+      <img src="{{ url_for('static', filename='images/logo-candi.png') }}" alt="Logo Benih Candi" class="login-logo" />
+      <h2>Masuk ke Akun Anda</h2>
+
+      <div class="login-options">
+        <button class="btn-google" onclick="loginWithGoogle()">
+          <img src="https://www.google.com/favicon.ico" alt="G" />
+          Masuk dengan Google
+        </button>
+
+        <div class="divider">atau</div>
+
+        <div class="phone-login">
+          <div class="phone-row">
+            <input
+              type="text"
+              class="input-phone"
+              placeholder="Masukkan nomor telepon (+62...)"
+            />
+            <button class="send-otp" onclick="sendOTP()">Kirim OTP</button>
+          </div>
+          <div class="otp-note small">
+            Kami akan mengirim kode verifikasi (simulasi).
+          </div>
+        </div>
+      </div>
+
+      <form action="#" class="login-form" onsubmit="handleLogin(event)">
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Masukkan email" required />
+        </div>
+
+        <div class="input-group">
+          <label for="password">Kata Sandi</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Masukkan kata sandi"
+            required
+          />
+        </div>
+
+        <button type="submit" class="login-btn">Masuk</button>
+
+        <p class="link">Belum punya akun? <a href="#">Daftar di sini</a></p>
+      </form>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+
+          <div class="footer-col">
+            <div class="footer-logo">
+              <img src="{{ url_for('static', filename='images/logo-candi.png') }}">
+              <h3>Benih Candi</h3>
+            </div>
+            <p>Menyediakan benih unggul untuk masa depan pertanian Indonesia yang lebih baik.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <span class="footer-underline"></span>
+            <ul>
+              <li><a href="{{ url_for('index') }}">Beranda</a></li>
+              <li><a href="{{ url_for('artikel') }}">Artikel</a></li>
+              <li><a href="{{ url_for('produk') }}">Produk</a></li>
+              <li><a href="{{ url_for('titik3') }}">Tentang Kami</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Kontak</h4>
+            <span class="footer-underline"></span>
+            <p>Alamat Kami</p>
+            <p><i class="fa fa-phone"></i> +62 813-2786-7831</p>
+            <p><i class="fa fa-envelope"></i> info@benihcandi.com</p>
+          </div>
+
+          <div class="footer-col">
+            <h4>Newsletter</h4>
+            <span class="footer-underline"></span>
+            <p>Dapatkan tips bertani dan promo terbaru dari kami</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Email Anda" required>
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Benih Candi. Semua Hak Dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

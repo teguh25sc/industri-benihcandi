@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Menu | Benih Candi</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,22 +21,22 @@
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo-area">
-      <img src="images/logo-candi.png" alt="Logo Candi" class="logo-img" />
+      <img src="{{ url_for('static', filename='images/logo-candi.png') }}" alt="Logo Candi" class="logo-img" />
       <span class="logo-text">Benih Candi</span>
     </div>
 
     <nav class="nav-links">
-      <a href="beranda.html" class="nav-link">Beranda</a>
-      <a href="artikel.html" class="nav-link">Artikel</a>
-      <a href="produk.html" class="nav-link">Daftar Produk</a>
-      <a href="login.html" class="nav-link">Login</a>
+      <a href="{{ url_for('index') }}" class="nav-link">Beranda</a>
+      <a href="{{ url_for('artikel') }}" class="nav-link">Artikel</a>
+      <a href="{{ url_for('produk') }}" class="nav-link">Daftar Produk</a>
+      <a href="{{ url_for('login') }}" class="nav-link">Login</a>
     </nav>
 
     <div class="nav-icons">
-      <a href="keranjang.html" title="Keranjang" class="cart-icon">
+      <a href="{{ url_for('keranjang') }}" title="Keranjang" class="cart-icon">
         <i class="fa-solid fa-cart-shopping"></i>
       </a>
-      <a href="titik3.html" title="Lainnya">
+      <a href="{{ url_for('titik3') }}" title="Lainnya">
         <i class="fa fa-ellipsis-v"></i>
       </a>
     </div>
@@ -52,11 +53,35 @@
     <div class="container">
       <h2>Menu Tambahan</h2>
       <ul class="menu-list">
-        <li><a href="tentangkami.html"><i class="fa fa-info-circle"></i> Tentang Kami</a></li>
-        <li><a href="pengembang.html"><i class="fa fa-user"></i> Pengembang Web</a></li>
-        <li><a href="konsultasi.html"><i class="fa fa-comments"></i> Konsultasi</a></li>
-        <li><a href="kebijakan&privasi.html"><i class="fa fa-shield-alt"></i> Kebijakan Privasi</a></li>
-        <li><a href="syaratdanketentuan.html"><i class="fa fa-file-contract"></i> Syarat & Ketentuan</a></li>
+        <li>
+          <a href="{{ url_for('tentangkami') }}">
+            <i class="fa fa-info-circle"></i> Tentang Kami
+          </a>
+        </li>
+
+        <li>
+          <a href="{{ url_for('pengembang') }}">
+            <i class="fa fa-user"></i> Pengembang Web
+          </a>
+        </li>
+
+        <li>
+          <a href="{{ url_for('konsultasi') }}">
+            <i class="fa fa-comments"></i> Konsultasi
+          </a>
+        </li>
+
+        <li>
+          <a href="{{ url_for('kebijakan_privasi') }}">
+            <i class="fa fa-shield-alt"></i> Kebijakan Privasi
+          </a>
+        </li>
+
+        <li>
+          <a href="{{ url_for('syaratdanketentuan') }}">
+            <i class="fa fa-file-contract"></i> Syarat & Ketentuan
+          </a>
+        </li>
       </ul>
     </div>
   </main>
@@ -69,7 +94,7 @@
         <!-- Kolom 1 -->
         <div class="footer-col">
           <div class="footer-logo">
-            <img src="images/logo-candi.png" alt="Logo Benih Candi">
+            <img src="{{ url_for('static', filename='images/logo-candi.png') }}" alt="Logo Benih Candi">
             <h3>Benih Candi</h3>
           </div>
           <p>Menyediakan benih unggul untuk masa depan pertanian Indonesia yang lebih baik.</p>
@@ -86,10 +111,10 @@
           <h4>Quick Links</h4>
           <span class="footer-underline"></span>
           <ul>
-            <li><a href="beranda.html">Beranda</a></li>
-            <li><a href="artikel.html">Artikel</a></li>
-            <li><a href="produk.html">Produk</a></li>
-            <li><a href="tentangkami.html">Tentang Kami</a></li>
+            <li><a href="{{ url_for('index') }}">Beranda</a></li>
+            <li><a href="{{ url_for('artikel') }}">Artikel</a></li>
+            <li><a href="{{ url_for('produk') }}">Produk</a></li>
+            <li><a href="{{ url_for('tentangkami') }}">Tentang Kami</a></li>
           </ul>
         </div>
 
@@ -121,5 +146,6 @@
     </div>
   </footer>
 
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

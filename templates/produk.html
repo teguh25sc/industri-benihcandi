@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produk | Benih Candi</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo-area">
+      <img src="{{ url_for('static', filename='images/logo-candi.png') }}" alt="Logo Candi" class="logo-img" />
+      <span class="logo-text">Benih Candi</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="{{ url_for('index') }}" class="nav-link">Beranda</a>
+      <a href="{{ url_for('artikel') }}" class="nav-link">Artikel</a>
+      <a href="{{ url_for('produk') }}" class="nav-link active">Daftar Produk</a>
+      <a href="{{ url_for('login') }}">Login</a>
+    </nav>
+
+    <div class="nav-icons">
+      <a href="{{ url_for('keranjang') }}" title="Keranjang" class="cart-icon">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count" style="display:none;">0</span>
+      </a>
+      <a href="{{ url_for('titik3') }}" title="Lainnya">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <div class="header-spacer"></div>
+
+  <!-- PRODUK -->
+  <section id="produk" class="produk-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Daftar Produk Benih</h2>
+        <p class="section-sub">Benih unggul untuk berbagai jenis tanaman</p>
+      </div>
+
+      <div class="produk-container">
+
+        {% for product in products %}
+        <div class="produk-card" data-category="{{ product['category'] }}">
+
+          {% if loop.first %}
+          <div class="produk-badge">UNGGULAN</div>
+          {% endif %}
+
+          <img src="{{ url_for('static', filename=product['image']) }}" alt="{{ product['name'] }}">
+
+          <div class="produk-info">
+            <h3>{{ product['name'] }}</h3>
+
+            <div class="produk-meta">
+              <span class="price">Rp {{ "{:,.0f}".format(product['price']).replace(",", ".") }}</span>
+              <span class="stock">Stok: {{ product['stock'] }}</span>
+            </div>
+
+            {% if product['description'] %}
+            <div class="produk-specs">
+              <p>{{ product['description'] }}</p>
+            </div>
+            {% endif %}
+
+            <div class="produk-actions">
+              <button class="btn-specs">Spesifikasi Produk</button>
+
+              <!--
+                PENTING: data-id diisi {{ product['id'] }} yaitu INTEGER dari database.
+                Ini yang dikirim ke /buy dan disimpan sebagai product_id di tabel orders.
+              -->
+              <button class="btn-cart"
+                data-name="{{ product['name'] }}"
+                data-price="{{ product['price'] }}"
+                data-id="{{ product['id'] }}"
+                data-img="{{ url_for('static', filename=product['image']) }}">
+                Beli
+              </button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+
+        <div class="footer-col">
+          <div class="footer-logo">
+            <img src="{{ url_for('static', filename='images/logo-candi.png') }}" alt="Logo Benih Candi">
+            <h3>Benih Candi</h3>
+          </div>
+          <p>Menyediakan benih unggul untuk masa depan pertanian Indonesia yang lebih baik.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="{{ url_for('index') }}">Beranda</a></li>
+            <li><a href="{{ url_for('artikel') }}">Artikel</a></li>
+            <li><a href="{{ url_for('produk') }}">Produk</a></li>
+            <li><a href="{{ url_for('titik3') }}">Tentang Kami</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Benih Candi. Semua Hak Dilindungi.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

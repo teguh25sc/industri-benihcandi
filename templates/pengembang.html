@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agro Citra Mandiri - Pengembang Web</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
   <!-- HEADER -->
   <header class="header">
-    <a href="titik3.html" class="back-btn">←</a>
+    <a href="{{ url_for('titik3') }}" class="back-btn">←</a>
     <h1 class="page-title">Pengembang Web</h1>
   </header>
 
@@ -20,7 +20,7 @@
     <div class="team-grid">
 
       <div class="member">
-        <img src="images/anggota1.jpg" alt="Teguh Santoso">
+        <img src="{{ url_for('static', filename='images/anggota1.jpg') }}" alt="Teguh Santoso">
         <h3>Teguh Santoso</h3>
         <a href="https://teguh2522009-hub.github.io/teguh_portofolio/index.html" target="_blank">
           Profil Selengkapnya
@@ -28,41 +28,41 @@
       </div>
 
       <div class="member">
-        <img src="images/anggota2.jpg" alt="Salwa Nur Azrina">
-        <h3>Rafi Pratama</h3>
-        <a href="https://teguh2522009-hub.github.io/teguh_portofolio/index.html" target="_blank">
+        <img src="{{ url_for('static', filename='images/anggota2.jpg') }}" alt="Salwa Nur Azrina">
+        <h3>Salwa Nur Azrina</h3>
+        <a href="https://salwasalwa211108-glitch.github.io/portofoliodigital_salwa/" target="_blank">
           Profil Selengkapnya
         </a>
       </div>
 
       <div class="member">
-        <img src="images/anggota3.jpg" alt="Widya Astutik">
-        <h3>Rizky Ananda</h3>
-        <a href="https://teguh2522009-hub.github.io/teguh_portofolio/index.html" target="_blank">
+        <img src="{{ url_for('static', filename='images/anggota3.jpg') }}" alt="Widya Astutik">
+        <h3>Widya Astutik</h3>
+        <a href="https://github.com/astutikwidiaa17/portofolio.widya.git" target="_blank">
           Profil Selengkapnya
         </a>
       </div>
 
       <div class="member">
-        <img src="images/anggota4.jpg" alt="Yessica Romantika Helena">
-        <h3>Dewi Lestari</h3>
-        <a href="https://teguh2522009-hub.github.io/teguh_portofolio/index.html" target="_blank">
+        <img src="{{ url_for('static', filename='images/anggota4.jpg') }}" alt="Yessica Romantika Helena">
+        <h3>Yessica Romantika Helena</h3>
+        <a href="https://github.com/yessicaromantikahelena-source/portfoliodigital_yessicaromantikaa.git" target="_blank">
           Profil Selengkapnya
         </a>
       </div>
 
       <div class="member">
-        <img src="images/anggota5.jpg" alt="Vanisa Keyla Revalda">
-        <h3>Fajar Hidayat</h3>
-        <a href="https://teguh2522009-hub.github.io/teguh_portofolio/index.html" target="_blank">
+        <img src="{{ url_for('static', filename='images/anggota5.jpg') }}" alt="Vanisa Keyla Revalda">
+        <h3>Vanisa Keyla Revalda</h3>
+        <a href="https://github.com/vanisavalda-lgtm/fortopoliovalda.git" target="_blank">
           Profil Selengkapnya
         </a>
       </div>
 
       <div class="member">
-        <img src="images/member6.jpg" alt="Muhammad Julio Mardiansyah">
-        <h3>Putri Amelia</h3>
-        <a href="https://teguh2522009-hub.github.io/teguh_portofolio/index.html" target="_blank">
+        <img src="{{ url_for('static', filename='images/anggota6.jpg') }}" alt="Muhammad Julio Mardiansyah">
+        <h3>Muhammad Julio Mardiansyah</h3>
+        <a href="https://github.com/juliomardiansyah/portofolio.git" target="_blank">
           Profil Selengkapnya
         </a>
       </div>
@@ -70,14 +70,14 @@
     </div>
   </main>
 
-  <!-- FOOTER (SAMA DENGAN BERANDA) -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-grid">
-        <!-- Kolom 1: Logo & Deskripsi -->
+
         <div class="footer-col">
           <div class="footer-logo">
-            <img src="images/logo-candi.png" alt="Logo Benih Candi">
+            <img src="{{ url_for('static', filename='images/logo-candi.png') }}" alt="Logo Benih Candi">
             <h3>Benih Candi</h3>
           </div>
           <p>Menyediakan benih unggul untuk masa depan pertanian Indonesia yang lebih baik.</p>
@@ -89,19 +89,17 @@
           </div>
         </div>
 
-        <!-- Kolom 2: Quick Links -->
         <div class="footer-col">
           <h4>Quick Links</h4>
           <span class="footer-underline"></span>
           <ul>
-            <li><a href="beranda.html">Beranda</a></li>
-            <li><a href="artikel.html" class="active">Artikel</a></li>
-            <li><a href="produk.html">Produk</a></li>
-            <li><a href="titik3.html">Tentang Kami</a></li>
+            <li><a href="{{ url_for('index') }}">Beranda</a></li>
+            <li><a href="{{ url_for('artikel') }}">Artikel</a></li>
+            <li><a href="{{ url_for('produk') }}">Produk</a></li>
+            <li><a href="{{ url_for('tentangkami') }}">Tentang Kami</a></li>
           </ul>
         </div>
 
-        <!-- Kolom 3: Kontak -->
         <div class="footer-col">
           <h4>Kontak</h4>
           <span class="footer-underline"></span>
@@ -110,7 +108,6 @@
           <p><i class="fa fa-envelope"></i> info@benihcandi.com</p>
         </div>
 
-        <!-- Kolom 4: Newsletter -->
         <div class="footer-col">
           <h4>Newsletter</h4>
           <span class="footer-underline"></span>
@@ -120,6 +117,7 @@
             <button type="submit">Subscribe</button>
           </form>
         </div>
+
       </div>
 
       <div class="footer-bottom">
@@ -128,6 +126,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
